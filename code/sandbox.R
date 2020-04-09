@@ -1,4 +1,4 @@
-UnlikelyTools::set_wd("unlikelyvolcano.github.io")
+UnlikelyTools::set_wd("covid19")
 
 library(readxl)
 

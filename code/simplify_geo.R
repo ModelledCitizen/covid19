@@ -1,4 +1,4 @@
-setwd("~/unlikelyvolcano.github.io")
+UnlikelyTools::set_wd("covid19")
 
 
 # Counties ----------------------------------------------------------------
