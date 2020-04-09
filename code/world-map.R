@@ -38,4 +38,4 @@ leaflet(jhu_daily_update) %>%
     title = "Open map in new tab",
     onClick = JS("function(btn, map){ window.open('https://covid19.unlikelyvolcano.com/world-map.html') }")
   )) %>%
-  htmlwidgets::saveWidget("world-map.html")
+  htmlwidgets::saveWidget("world-map.html", title = "Global COVID-19 Map")
