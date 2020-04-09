@@ -224,11 +224,11 @@ leaflet(jhu_us_map) %>%
   addEasyButton(easyButton(
     icon = "fa-external-link",
     title = "Open map in new tab",
-    onClick = JS("function(btn, map){ window.open('https://unlikelyvolcano.com/us-map.html') }")
+    onClick = JS("function(btn, map){ window.open('https://covid19.unlikelyvolcano.com/us-map.html') }")
   )) %>%
   addEasyButton(easyButton(
     icon = "fa-film",
     title = "See GIF of map over time",
-    onClick = JS("function(btn, map){ window.open('https://unlikelyvolcano.com/spread.gif') }")
+    onClick = JS("function(btn, map){ window.open('https://covid19.unlikelyvolcano.com/spread.gif') }")
   )) %>%
   htmlwidgets::saveWidget("us-map.html")

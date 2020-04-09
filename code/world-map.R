@@ -36,6 +36,6 @@ leaflet(jhu_daily_update) %>%
   addEasyButton(easyButton(
     icon = "fa-external-link",
     title = "Open map in new tab",
-    onClick = JS("function(btn, map){ window.open('https://unlikelyvolcano.com/world-map.html') }")
+    onClick = JS("function(btn, map){ window.open('https://covid19.unlikelyvolcano.com/world-map.html') }")
   )) %>%
   htmlwidgets::saveWidget("world-map.html")
