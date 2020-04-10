@@ -244,4 +244,4 @@ source("code/spread.R")
 
 # Github ------------------------------------------------------------------
 
-system("git ")
+system("git add .; git commit -m 'Automatic update'")
