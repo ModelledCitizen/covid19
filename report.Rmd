@@ -314,7 +314,7 @@ kable(
 [Worldometers](https://www.worldometers.info/coronavirus/) (Updated: `r format(Sys.time(), "%d %B %Y at %H:%M")`)
 ```{r wmt:world}
 kable(
-  worldometers[worldometers$`Country,Other` == "Total:", c(2, 7, 6, 4, 8, 9, 10)],
+  worldometers[nrow(worldometers), c(2, 7, 6, 4, 8, 9, 10)],
   col.names = c(
     "Cases",
     "Active",

@@ -134,7 +134,9 @@ for (i in 1:nrow(cop2)) {
 cop3[["TOT"]] <- cop3$NEG + cop3$POS
 cop3 <- cop3[cop3$Date > "2020-02-29", ]
 
-phl.update <- format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"), "%d %B %Y at %H:%M")
+phl.update <-
+  format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
+         "%d %B %Y at %H:%M")
 
 
 # Reformat US Data --------------------------------------------------------
