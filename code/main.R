@@ -241,3 +241,7 @@ source("code/world-map.R")
 
 source("code/spread.R")
 
+
+# Github ------------------------------------------------------------------
+
+system("git ")
