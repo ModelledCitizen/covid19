@@ -1,5 +1,6 @@
 UnlikelyTools::set_wd("covid19")
 
+library(plyr)
 library(tidyverse)
 library(rvest)
 
