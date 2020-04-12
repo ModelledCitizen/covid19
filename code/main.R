@@ -145,8 +145,7 @@ pa.update <-
 
 # Philadelphia Department of Public Health --------------------------------
 
-ph_url <-
-  "https://public.tableau.com/vizql/w/COP-COVID-19/v/Stacked/vud/sessions/EA8E5103C4F3441FAFD0291C6F66D37F-0:0/views/7713620505763405234_17874758422068147630?csv=true&showall=true"
+ph_url <- readLines("phila_url.txt")
 tryCatch({
   cop <- read.csv(ph_url, stringsAsFactors = F)
 },
