@@ -416,7 +416,7 @@ plots <- map2(
       name = "Tests",
       n.breaks = 11,
       trans = "log10",
-      limits = c(1, max(ctp_st_time$totalTestResults))
+      limits = c(1, max(ctp_st_time$totalTestResults, na.rm = T))
     ) +
     theme_dark
 )
