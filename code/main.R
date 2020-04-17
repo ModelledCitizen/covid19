@@ -134,7 +134,7 @@ pa.overall <-
 pa.update <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > span"
+    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > em:nth-child(1)"
   ) %>%
   html_text() %>%
   (function(x)
