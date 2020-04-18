@@ -29,3 +29,26 @@ jsn <-
     "https://covid19-static.cdn-apple.com/covid19-mobility-data/2005HotfixDev12/v1/en-us/applemobilitytrends.json"
   ) %>% fromJSON()
 str(jsn$data$Philadelphia)
+
+
+# kable(
+#   worldometers[worldometers$`Country,Other` == "USA", c(2, 7, 6, 4, 8, 9, 10)],
+#   col.names = c(
+#     "Cases",
+#     "Active",
+#     "Recovered",
+#     "Deaths",
+#     "Critical",
+#     "Cases / 1M Pop.",
+#     "Deaths / 1M Pop."
+#   ),
+#   row.names = F,
+#   align = "ccccc"
+# ) %>%
+#   kable_styling() %>%
+#   row_spec(1, bold = T) %>%
+#   column_spec(1, color = "darkorange") %>%
+#   column_spec(2, color = "goldenrod") %>%
+#   column_spec(3, color = "yellowgreen") %>%
+#   column_spec(4, color = "firebrick") %>%
+#   save_kable("us_worldometers.html")
