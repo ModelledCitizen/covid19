@@ -50,7 +50,7 @@ nyt_counties$date <- as.Date(nyt_counties$date)
 nyt_update_date <-
   sort(unique(nyt_counties$date), decreasing = T)[1]
 nyt_counties_live <-
-  nyt_counties[nyt_counties$date == nyt_update_date, ]
+  nyt_counties[nyt_counties$date == nyt_update_date,]
 
 nyt_states <-
   read.csv(
@@ -59,7 +59,7 @@ nyt_states <-
   )
 nyt_states$fips <- sprintf("%05d", nyt_states$fips)
 nyt_states$date <- as.Date(nyt_states$date)
-nyt_states_live <- nyt_states[nyt_states$date == nyt_update_date, ]
+nyt_states_live <- nyt_states[nyt_states$date == nyt_update_date,]
 
 nyt_update_date <- format.Date(nyt_update_date, "%d %B %Y")
 
@@ -98,6 +98,7 @@ error = function(cond) {
     sprintf(jhu_daily_base, format.Date(Sys.Date() - 1, "%m-%d-%Y"))
   jhu_daily_update <<- read.csv(jhu_daily_url, stringsAsFactors = F)
 }, finally = {
+
 })
 
 
@@ -113,8 +114,8 @@ pa.counties <-
     x[[1]]
   }) %>%
   (function(x) {
-    colnames(x) <- x[1, ]
-    x[-1, ]
+    colnames(x) <- x[1,]
+    x[-1,]
   })
 
 pa.overall <-
@@ -127,8 +128,8 @@ pa.overall <-
     x[[1]]
   }) %>%
   (function(x) {
-    colnames(x) <- x[1, ]
-    x[-1, ]
+    colnames(x) <- x[1,]
+    x[-1,]
   })
 
 pa.update <-
@@ -173,7 +174,7 @@ for (i in 1:nrow(cop2)) {
   cop3$POS[i] <- sum(cop2$POS[1:i])
 }
 cop3[["TOT"]] <- cop3$NEG + cop3$POS
-cop3 <- cop3[cop3$Date > "2020-02-29",]
+cop3 <- cop3[cop3$Date > "2020-02-29", ]
 
 phl.update <-
   format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
@@ -189,7 +190,7 @@ jhu_us_ts <-
     deaths = colSums(jhu_ts_death[jhu_ts_death$Country.Region %in% "US" , -(1:4)], na.rm = T)
   )
 jhu_us_live <-
-  jhu_daily_update[jhu_daily_update$Country_Region %in% "US", ]
+  jhu_daily_update[jhu_daily_update$Country_Region %in% "US",]
 
 ctp_st_time <-
   merge(
