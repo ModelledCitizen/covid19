@@ -1,5 +1,7 @@
 setwd("~/covid19")
 
+rm(list = ls())
+
 library(leaflet)
 library(rgdal)
 library(rgeos)

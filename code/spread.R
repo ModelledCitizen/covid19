@@ -1,5 +1,7 @@
 setwd("~/covid19")
 
+rm(list = ls())
+
 library(rgdal)
 library(purrr)
 library(plyr)
@@ -53,6 +55,7 @@ us_map <- readRDS("data/us_counties.RDS")
 us_cases <- merge(us_map, combined, by.x = "GEOID", by.y = "FIPS")
 x <- c(43, 72, 52, 78, 74, 69, 76, 79, 95, 70, 86, 67, 89, 68, 71, 14, 66, 07, 64, 60, 03, 84, 15, 02)
 us_cases <- us_cases[!as.numeric(us_cases$STATEFP) %in% x,]
+
 
 saveGIF({
   for (d in day) {

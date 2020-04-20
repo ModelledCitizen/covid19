@@ -1,5 +1,6 @@
 setwd("~/covid19")
 
+rm(list = ls())
 
 library(plyr)
 library(tidyverse)
@@ -142,7 +143,7 @@ pa.update <-
   (function(x)
     gsub("\\.", "", x)) %>%
   strptime("* Map, tables and case counts last updated at %I:%M %p on %m/%e/%Y") %>%
-  format.Date("%d %B %Y at %H:%M")
+  format.Date("%d %B %Y at %H:%M EDT")
 
 
 # Philadelphia Department of Public Health --------------------------------
@@ -179,7 +180,7 @@ cop3 <- cop3[cop3$Date > "2020-02-29", ]
 
 phl.update <-
   format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
-         "%d %B %Y at %H:%M")
+         "%d %B %Y at %H:%M EDT")
 
 
 # Reformat US Data --------------------------------------------------------
@@ -288,14 +289,14 @@ save(list = ls(), file = "data/collected-data.Rdata")
 rmarkdown::render("report.Rmd", output_file = "index.html")
 
 
-# Update US Map -----------------------------------------------------------
-
-source("code/us-map.R")
-
-
 # Update World Map --------------------------------------------------------
 
 source("code/world-map.R")
+
+
+# Update US Map -----------------------------------------------------------
+
+source("code/us-map.R")
 
 
 # Update US Map GIF -------------------------------------------------------

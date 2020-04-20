@@ -1,3 +1,9 @@
+setwd("~/covid19")
+
+rm(list = ls())
+
+load("data/collected-data.Rdata")
+
 library(leaflet)
 
 lab <- paste0(
