@@ -699,3 +699,7 @@ kable(
   column_spec(1, bold = T)
 ```
 
+
+```{r cleanup}
+rm(list = ls())
+```

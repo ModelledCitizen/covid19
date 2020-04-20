@@ -283,22 +283,4 @@ rm(i, cop, cop2, jhu_daily_base, jhu_daily_url, jhu_url, ph_url)
 
 save(list = ls(), file = "data/collected-data.Rdata")
 
-
-# Knit Report -------------------------------------------------------------
-
-rmarkdown::render("report.Rmd", output_file = "index.html")
-
-
-# Update World Map --------------------------------------------------------
-
-source("code/world-map.R")
-
-
-# Update US Map -----------------------------------------------------------
-
-source("code/us-map.R")
-
-
-# Update US Map GIF -------------------------------------------------------
-
-source("code/spread.R")
+rm(list = ls())
