@@ -162,7 +162,7 @@ kable(
 [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
 ```{r pa:pa}
 pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 2]))
-pa.overall <- pa.overall[,c(1, 2, 4, 3)]
+pa.overall <- pa.overall[,c(2, 1, 4, 3)]
 pa.overall[1, ] <-
   vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
 kable(
