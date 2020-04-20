@@ -141,8 +141,16 @@ pa.update <-
   ) %>%
   html_text() %>%
   (function(x)
-    gsub("\\.", "", x)) %>%
-  strptime("* Map, tables and case counts last updated at %I:%M %p on %m/%e/%Y") %>%
+    gsub("p\\.m\\.", "PM", x)) %>%
+  (function(x)
+    gsub("a\\.m\\.", "AM", x)) %>%
+  (function(x)
+    gsub(" ([0-9])", " 0\\1", x)) %>%
+  (function(x)
+    gsub("\\* ", "", x)) %>%
+  (function(x)
+    gsub("Map, tables and case counts last updated at ", "", x, fixed = T)) %>%
+  strptime("%I:%M %p on %m/%e/%Y") %>%
   format.Date("%d %B %Y at %H:%M EDT")
 
 

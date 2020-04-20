@@ -38,6 +38,4 @@ while (TRUE) {
 
   }
 
-  Sys.sleep(30)
-
 }
