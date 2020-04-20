@@ -1,4 +1,4 @@
-UnlikelyTools::set_wd("covid19")
+setwd("~/covid19")
 
 library(rgdal)
 library(purrr)

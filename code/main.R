@@ -1,4 +1,5 @@
-UnlikelyTools::set_wd("covid19")
+setwd("~/covid19")
+
 
 library(plyr)
 library(tidyverse)
@@ -300,9 +301,3 @@ source("code/world-map.R")
 # Update US Map GIF -------------------------------------------------------
 
 source("code/spread.R")
-
-
-# Github ------------------------------------------------------------------
-
-system("git add .; git commit -m 'Automatic update'")
-system("git push")
