@@ -11,7 +11,7 @@ output:
     fig_height: 7
 ---
 ```{r setup, include=FALSE}
-UnlikelyTools::set_wd("covid19")
+setwd("~/covid19")
 
 library(knitr)
 library(purrr)
@@ -161,9 +161,8 @@ kable(
 ## Pennsylvania
 [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
 ```{r pa:pa}
-pa.overall[["Total"]]                   <-
-  as.numeric(gsub(",", "", pa.overall$Negative)) + as.numeric(gsub(",", "", pa.overall$Positive))
-pa.overall <- pa.overall[,c("Positive", "Negative", "Total", "Deaths")]
+pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 2]))
+pa.overall <- pa.overall[,c(1, 2, 4, 3)]
 pa.overall[1, ] <-
   vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
 kable(

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="David Azizi" />
@@ -14,7 +14,6 @@
 
 <title>COVID-19 Situation Report</title>
 
-<script src="index_files/header-attrs-2.1/header-attrs.js"></script>
 <script src="index_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="index_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -73,6 +72,7 @@ code {
 }
 img {
   max-width:100%;
+  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -134,7 +134,6 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
-  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -147,9 +146,48 @@ summary {
 }
 </style>
 
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
 <!-- code folding -->
 
 
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <style type="text/css">
 
@@ -163,12 +201,6 @@ summary {
 }
 }
 
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
 
 .toc-content {
   padding-left: 30px;
@@ -204,6 +236,8 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -245,16 +279,16 @@ div.tocify {
 </div>
 
 
-<p>This report was last updated on 19 April 2020 at 17:45 with daily totals from 18 April 2020.</p>
+<p>This report was last updated on 20 April 2020 at 02:51 with daily totals from 19 April 2020.</p>
 <p>Data collected by <a href="https://www.worldometers.info/coronavirus/">Worldometers</a>, <a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a>, <a href="https://covidtracking.com/">The COVID Tracking Project</a>, and <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</p>
 <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101237072);</script>
 <script async src="//static.getclicky.com/js"></script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101237072ns.gif" /></p></noscript>
 <div id="overview" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">Overview</h1>
+<h1>Overview</h1>
 <div id="united-states" class="section level2">
 <h2>United States</h2>
-<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 19 April 2020 at 17:45)
+<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 20 April 2020 at 02:51)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -284,30 +318,30 @@ Deaths / 1M Pop.
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-762,496
+764,265
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-652,062
+652,688
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-69,956
+71,012
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-40,478
+40,565
 </td>
 <td style="text-align:center;font-weight: bold;">
-13,556
+13,566
 </td>
 <td style="text-align:center;font-weight: bold;">
-2,304
+2,309
 </td>
 <td style="text-align:center;font-weight: bold;">
-122
+123
 </td>
 </tr>
 </tbody>
 </table>
-<a href="https://covidtracking.com/">The COVID Tracking Project</a> (Updated: 19 April 2020)
+<a href="https://covidtracking.com/">The COVID Tracking Project</a> (Updated: 20 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -348,7 +382,7 @@ Deaths
 </tr>
 </tbody>
 </table>
-<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 18 April 2020)
+<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 19 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -369,16 +403,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-732,197
+759,086
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-628,693
+648,088
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-64,840
+70,337
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-38,664
+40,661
 </td>
 </tr>
 </tbody>
@@ -409,7 +443,7 @@ Deaths
 </div>
 <div id="pennsylvania" class="section level2">
 <h2>Pennsylvania</h2>
-<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: 19 April 2020 at 13:00)
+<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: NA)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -430,10 +464,10 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-32,284
+126,570
 </td>
 <td style="text-align:center;font-weight: bold;color: seagreen !important;">
-126,570
+32,284
 </td>
 <td style="text-align:center;font-weight: bold;color: royalblue !important;">
 158,854
@@ -444,7 +478,7 @@ Deaths
 </tr>
 </tbody>
 </table>
-<a href="https://covidtracking.com/">The COVID Tracking Project</a> (Updated: 19 April 2020)
+<a href="https://covidtracking.com/">The COVID Tracking Project</a> (Updated: 20 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -485,7 +519,7 @@ NA
 </tr>
 </tbody>
 </table>
-<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 18 April 2020)
+<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 19 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -506,16 +540,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-31,652
+32,902
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-30,610
+31,626
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
 0
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-1,042
+1,276
 </td>
 </tr>
 </tbody>
@@ -564,18 +598,18 @@ Total Tests
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-9,014
+9,214
 </td>
 <td style="text-align:center;font-weight: bold;color: seagreen !important;">
-20,422
+20,908
 </td>
 <td style="text-align:center;font-weight: bold;color: royalblue !important;">
-29,436
+30,122
 </td>
 </tr>
 </tbody>
 </table>
-<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 18 April 2020)
+<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 19 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -596,16 +630,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-9,014
+9,214
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-8,672
+8,849
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
 0
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-342
+365
 </td>
 </tr>
 </tbody>
@@ -636,7 +670,7 @@ Deaths
 </div>
 <div id="global" class="section level2">
 <h2>Global</h2>
-<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 19 April 2020 at 17:45)
+<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 20 April 2020 at 02:51)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -666,30 +700,30 @@ Deaths / 1M Pop.
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-2,402,980
+2,407,339
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-1,621,636
+1,625,247
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-615,703
+617,023
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-165,641
+165,069
 </td>
 <td style="text-align:center;font-weight: bold;">
-54,215
+54,218
 </td>
 <td style="text-align:center;font-weight: bold;">
-308.3
+308.8
 </td>
 <td style="text-align:center;font-weight: bold;">
-21.3
+21.2
 </td>
 </tr>
 </tbody>
 </table>
-<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 18 April 2020)
+<a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a> (Updated: 19 April 2020)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -710,16 +744,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-2,317,759
+2,401,379
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-1,565,930
+1,612,432
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-592,319
+623,903
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-159,510
+165,044
 </td>
 </tr>
 </tbody>
@@ -727,7 +761,7 @@ Deaths
 </div>
 </div>
 <div id="case-map" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">Case Map</h1>
+<h1>Case Map</h1>
 <div id="united-states-1" class="section level2">
 <h2>United States</h2>
 <object type="text/html" data="us-map.html" width="1000" height="500" style="width:100%"></object>
@@ -738,7 +772,7 @@ Deaths
 </div>
 </div>
 <div id="cumulative-tests" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">Cumulative Tests</h1>
+<h1>Cumulative Tests</h1>
 <div id="united-states-2" class="section level2">
 <h2>United States</h2>
 <p><img src="index_files/figure-html/testing:us-1.png" width="100%" /></p>
@@ -753,9 +787,9 @@ Deaths
 </div>
 </div>
 <div id="cumulative-cases" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">Cumulative Cases</h1>
+<h1>Cumulative Cases</h1>
 <div id="united-states-3" class="section level2 tabset tabset-fade tabset-pills">
-<h2 class="tabset tabset-fade tabset-pills">United States</h2>
+<h2>United States</h2>
 <div id="logarithmic" class="section level3">
 <h3>Logarithmic</h3>
 <p><img src="index_files/figure-html/us:logged-1.png" width="100%" /></p>
@@ -766,7 +800,7 @@ Deaths
 </div>
 </div>
 <div id="global-2" class="section level2 tabset tabset-fade tabset-pills">
-<h2 class="tabset tabset-fade tabset-pills">Global</h2>
+<h2>Global</h2>
 <div id="logarithmic-1" class="section level3">
 <h3>Logarithmic</h3>
 <p><img src="index_files/figure-html/world:logged-1.png" width="100%" /></p>
@@ -780,7 +814,7 @@ Deaths
 <div id="growth-rate" class="section level1">
 <h1>Growth Rate</h1>
 <div id="new-cases-by-day" class="section level2 tabset tabset-fade tabset-pills">
-<h2 class="tabset tabset-fade tabset-pills">New Cases by Day</h2>
+<h2>New Cases by Day</h2>
 <div id="united-states-4" class="section level3">
 <h3>United States</h3>
 <p><img src="index_files/figure-html/us:newcases-1.png" width="100%" /></p>
@@ -791,7 +825,7 @@ Deaths
 </div>
 </div>
 <div id="reproduction-ratio" class="section level2 tabset tabset-fade tabset-pills">
-<h2 class="tabset tabset-fade tabset-pills">Reproduction Ratio</h2>
+<h2>Reproduction Ratio</h2>
 <div id="united-states-5" class="section level3">
 <h3>United States</h3>
 <p><img src="index_files/figure-html/us:growth-1.png" width="100%" /></p>
@@ -803,7 +837,7 @@ Deaths
 </div>
 </div>
 <div id="table" class="section level1 tabset tabset-fade tabset-pills">
-<h1 class="tabset tabset-fade tabset-pills">Table</h1>
+<h1>Table</h1>
 <div id="united-states-6" class="section level2">
 <h2>United States</h2>
 <table class="table table-hover" style="margin-left: auto; margin-right: auto;">
@@ -2108,6 +2142,32 @@ New Deaths
 </td>
 <td style="text-align:left;">
 1.012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+2020-04-19
+</td>
+<td style="text-align:left;">
+759,086
+</td>
+<td style="text-align:left;">
+40,661
+</td>
+<td style="text-align:left;">
+1.037
+</td>
+<td style="text-align:left;">
+1.052
+</td>
+<td style="text-align:left;">
+26,889
+</td>
+<td style="text-align:left;">
+1,997
+</td>
+<td style="text-align:left;">
+0.828
 </td>
 </tr>
 </tbody>
@@ -3419,6 +3479,32 @@ New Deaths
 0.884
 </td>
 </tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+2020-04-19
+</td>
+<td style="text-align:left;">
+2,401,378
+</td>
+<td style="text-align:left;">
+165,043
+</td>
+<td style="text-align:left;">
+1.036
+</td>
+<td style="text-align:left;">
+1.035
+</td>
+<td style="text-align:left;">
+83,620
+</td>
+<td style="text-align:left;">
+5,534
+</td>
+<td style="text-align:left;">
+1.078
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3442,49 +3528,6 @@ $(document).ready(function () {
 });
 
 
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

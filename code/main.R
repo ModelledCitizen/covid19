@@ -165,8 +165,8 @@ cop2 <-
     Date = as.Date(rownames(table(
       cop$Result.Date, cop$Result
     ))),
-    NEG = table(cop$Result.Date, cop$Result)[, 2],
-    POS = table(cop$Result.Date, cop$Result)[, 3],
+    NEG = table(cop$Result.Date, cop$Result)[,  "NEG"],
+    POS = table(cop$Result.Date, cop$Result)[,  "POS"],
     row.names = NULL
   )
 cop3 <- cop2
