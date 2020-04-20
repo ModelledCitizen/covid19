@@ -1,5 +1,7 @@
 setwd("~/covid19")
 
+rm(list = ls())
+
 while (TRUE) {
 
   if (format(Sys.time(), "%M") %in% c(0, 30)) {
@@ -9,6 +11,7 @@ while (TRUE) {
     # Get Data ----------------------------------------------------------------
 
     source("code/get_data.R")
+
 
     # Knit Report -------------------------------------------------------------
 
@@ -34,5 +37,7 @@ while (TRUE) {
     system("git push")
 
   }
+
+  Sys.sleep(30)
 
 }
