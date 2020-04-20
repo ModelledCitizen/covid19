@@ -234,3 +234,5 @@ leaflet(jhu_us_map) %>%
     onClick = JS("function(btn, map){ window.open('https://covid19.unlikelyvolcano.com/spread.gif') }")
   )) %>%
   htmlwidgets::saveWidget("us-map.html", title = "United States COVID-19 Map")
+
+rm(list = ls())
