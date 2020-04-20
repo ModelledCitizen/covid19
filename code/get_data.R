@@ -134,7 +134,7 @@ pa.overall <-
     x[-1,]
   })
 
-pa.update <-
+pa.time <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
     "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > em:nth-child(1)"
@@ -145,10 +145,23 @@ pa.update <-
   (function(x)
     gsub("a\\.m\\.", "AM", x)) %>%
   (function(x)
-    gsub(" ([0-9])", " 0\\1", x)) %>%
+    substr(x, 47, 54))
+pa.date <-
+  read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
+  html_nodes(
+    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > em:nth-child(1)"
+  ) %>%
+  html_text() %>%
   (function(x)
-    gsub("\\* ", "", x)) %>%
-  strptime("Map\\, tables and case counts last updated at %I:%M %p on %m/%d/%Y") %>%
+    gsub("p\\.m\\.", "PM", x)) %>%
+  (function(x)
+    gsub("a\\.m\\.", "AM", x)) %>%
+  (function(x)
+    substr(x, 58, nchar(x))) %>%
+  (function(x)
+    gsub(" ([0-9])", " 0\\1", x))
+pa.update <-
+  strptime(paste0(pa.time, pa.date), "%I:%M %p %m/%d/%Y") %>%
   format.Date("%d %B %Y at %H:%M EDT")
 
 
@@ -187,8 +200,6 @@ cop3 <- cop3[cop3$Date > "2020-02-29", ]
 phl.update <-
   format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
          "%d %B %Y at %H:%M EDT")
-
-pa.update <- phl.update
 
 
 # Reformat US Data --------------------------------------------------------
