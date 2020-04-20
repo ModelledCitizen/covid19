@@ -6,7 +6,7 @@ while (TRUE) {
 
   if (format(Sys.time(), "%M") %in% c(0, 30)) {
 
-    system("git fetch")
+    system("git fetch; git pull")
 
     # Get Data ----------------------------------------------------------------
 
@@ -20,17 +20,17 @@ while (TRUE) {
 
     # Update World Map --------------------------------------------------------
 
-    #source("code/world-map.R")
+    source("code/world-map.R")
 
 
     # Update US Map -----------------------------------------------------------
 
-    #source("code/us-map.R")
+    source("code/us-map.R")
 
 
     # Update US Map GIF -------------------------------------------------------
 
-    #source("code/spread.R")
+    source("code/spread.R")
 
 
     system("git add .; git commit -m 'Automatic update'")
