@@ -4,59 +4,59 @@ rm(list = ls())
 
 while (TRUE) {
 
-  if (format(Sys.time(), "%M") %in% c(0, 30)) {
+  if (as.numeric(format(Sys.time(), "%M")) == 0)  {
 
-    print(Sys.time())
-    print("Starting update...")
+    cat(format(Sys.time()))
+    cat(": Starting update...\n")
 
-    print(Sys.time())
-    print("Pull repo...")
+    cat(format(Sys.time()))
+    cat(": Pull repo...\n")
     system("git fetch; git pull")
 
     # Get Data ----------------------------------------------------------------
 
-    print(Sys.time())
-    print("Get data...")
+    cat(format(Sys.time()))
+    cat(": Get data...\n")
     source("code/get_data.R")
 
 
     # Knit Report -------------------------------------------------------------
 
 
-    print(Sys.time())
-    print("Render index...")
+    cat(format(Sys.time()))
+    cat(": Render index...\n")
     rmarkdown::render("report.Rmd", output_file = "index.html")
 
 
-    if (format(Sys.time(), "%M") == 0 &
-        as.numeric(format(Sys.time(), "%H")) %%  2 == 0)  {
+    if (as.numeric(format(Sys.time(), "%H")) %%  2 == 0)  {
       # Update World Map --------------------------------------------------------
 
-      print(Sys.time())
-      print("Save world map...")
+      cat(format(Sys.time()))
+      cat(": Save world map...\n")
       source("code/world-map.R")
 
 
       # Update US Map -----------------------------------------------------------
 
-      print(Sys.time())
-      print("Save US map...")
+      cat(format(Sys.time()))
+      cat(": Save US map...\n")
       source("code/us-map.R")
 
 
       # Update US Map GIF -------------------------------------------------------
 
-            print(Sys.time())
-      print("Save spread GIF...")
+      cat(format(Sys.time()))
+      cat(": Save spread GIF...\n")
       source("code/spread.R")
 
     }
 
-    print(Sys.time())
-    print("Commit changes...")
+    cat(format(Sys.time()))
+    cat(": Commit changes...\n")
     system("git add .; git commit -m 'Automatic update'")
-    print(Sys.time())
-    print("Push repo...")
+
+    cat(format(Sys.time()))
+    cat(": Push repo...\n")
     system("git push")
 
   }
