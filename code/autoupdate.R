@@ -28,25 +28,29 @@ while (TRUE) {
     rmarkdown::render("report.Rmd", output_file = "index.html")
 
 
-    # Update World Map --------------------------------------------------------
+    if (format(Sys.time(), "%M") == 0 &
+        as.numeric(format(Sys.time(), "%H")) %%  2 == 0)  {
+      # Update World Map --------------------------------------------------------
 
-    print(Sys.time())
-    print("Save world map...")
-    source("code/world-map.R")
-
-
-    # Update US Map -----------------------------------------------------------
-
-    print(Sys.time())
-    print("Save US map...")
-    source("code/us-map.R")
+      print(Sys.time())
+      print("Save world map...")
+      source("code/world-map.R")
 
 
-    # Update US Map GIF -------------------------------------------------------
+      # Update US Map -----------------------------------------------------------
 
-    print(Sys.time())
-    print("Save spread GIF...")
-    source("code/spread.R")
+      print(Sys.time())
+      print("Save US map...")
+      source("code/us-map.R")
+
+
+      # Update US Map GIF -------------------------------------------------------
+
+            print(Sys.time())
+      print("Save spread GIF...")
+      source("code/spread.R")
+
+    }
 
     print(Sys.time())
     print("Commit changes...")
