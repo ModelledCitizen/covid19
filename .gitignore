@@ -5,6 +5,9 @@ data/tl_2019_us_state/
 # log file should not be committed
 logfile.txt
 
+# nor should the alert code
+code/alert.R
+
 # Mac folder view files
 .DS_Store
 
