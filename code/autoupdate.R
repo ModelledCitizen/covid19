@@ -2,6 +2,8 @@ setwd("~/covid19")
 
 rm(list = ls())
 
+sink("logfile.txt")
+
 while (TRUE) {
 
   if (as.numeric(format(Sys.time(), "%M")) == 0)  {
@@ -25,7 +27,7 @@ while (TRUE) {
 
     cat(format(Sys.time()))
     cat(": Render index...\n")
-    rmarkdown::render("report.Rmd", output_file = "index.html")
+    rmarkdown::render("report.Rmd", output_file = "index.html", quiet = T)
 
 
     if (as.numeric(format(Sys.time(), "%H")) %%  2 == 0)  {

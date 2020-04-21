@@ -1,157 +1,0 @@
-2020-04-21 19:15:34: Starting update...
-2020-04-21 19:15:37: Pull repo...
-2020-04-21 19:15:42: Get data...
-2020-04-21 19:15:56: Render index...
-  |                                                                         |                                                                 |   0%  |                                                                         |.                                                                |   2%
-  ordinary text without R code
-
-  |                                                                         |..                                                               |   4%
-label: setup (with options) 
-List of 1
- $ include: logi FALSE
-
-  |                                                                         |...                                                              |   5%
-   inline R code fragments
-
-  |                                                                         |.....                                                            |   7%
-label: wmt:us
-  |                                                                         |......                                                           |   9%
-   inline R code fragments
-
-  |                                                                         |.......                                                          |  11%
-label: ctp:us
-  |                                                                         |........                                                         |  12%
-   inline R code fragments
-
-  |                                                                         |.........                                                        |  14%
-label: jhu:us
-  |                                                                         |..........                                                       |  16%
-   inline R code fragments
-
-  |                                                                         |............                                                     |  18%
-label: nyt:us
-  |                                                                         |.............                                                    |  20%
-   inline R code fragments
-
-  |                                                                         |..............                                                   |  21%
-label: pa:pa
-  |                                                                         |...............                                                  |  23%
-   inline R code fragments
-
-  |                                                                         |................                                                 |  25%
-label: ctp:pa
-  |                                                                         |.................                                                |  27%
-   inline R code fragments
-
-  |                                                                         |...................                                              |  29%
-label: jhu:pa
-  |                                                                         |....................                                             |  30%
-   inline R code fragments
-
-  |                                                                         |.....................                                            |  32%
-label: nyt:pa
-  |                                                                         |......................                                           |  34%
-   inline R code fragments
-
-  |                                                                         |.......................                                          |  36%
-label: ph:ph
-  |                                                                         |........................                                         |  38%
-   inline R code fragments
-
-  |                                                                         |..........................                                       |  39%
-label: jhu:ph
-  |                                                                         |...........................                                      |  41%
-   inline R code fragments
-
-  |                                                                         |............................                                     |  43%
-label: nyt:ph
-  |                                                                         |.............................                                    |  45%
-   inline R code fragments
-
-  |                                                                         |..............................                                   |  46%
-label: wmt:world
-  |                                                                         |...............................                                  |  48%
-   inline R code fragments
-
-  |                                                                         |................................                                 |  50%
-label: jhu:world
-  |                                                                         |..................................                               |  52%
-  ordinary text without R code
-
-  |                                                                         |...................................                              |  54%
-label: testing:us
-  |                                                                         |....................................                             |  55%
-  ordinary text without R code
-
-  |                                                                         |.....................................                            |  57%
-label: testing:state (with options) 
-List of 3
- $ fig.show     : chr "animate"
- $ ffmpeg.format: chr "gif"
- $ dev          : chr "jpeg"
-
-  |                                                                         |......................................                           |  59%
-  ordinary text without R code
-
-  |                                                                         |.......................................                          |  61%
-label: ph:testing
-  |                                                                         |.........................................                        |  62%
-  ordinary text without R code
-
-  |                                                                         |..........................................                       |  64%
-label: us:logged
-  |                                                                         |...........................................                      |  66%
-  ordinary text without R code
-
-  |                                                                         |............................................                     |  68%
-label: us:total
-  |                                                                         |.............................................                    |  70%
-  ordinary text without R code
-
-  |                                                                         |..............................................                   |  71%
-label: world:logged
-  |                                                                         |................................................                 |  73%
-  ordinary text without R code
-
-  |                                                                         |.................................................                |  75%
-label: world:total
-  |                                                                         |..................................................               |  77%
-  ordinary text without R code
-
-  |                                                                         |...................................................              |  79%
-label: us:newcases
-  |                                                                         |....................................................             |  80%
-  ordinary text without R code
-
-  |                                                                         |.....................................................            |  82%
-label: world:newcases
-  |                                                                         |.......................................................          |  84%
-  ordinary text without R code
-
-  |                                                                         |........................................................         |  86%
-label: us:growth
-  |                                                                         |.........................................................        |  88%
-  ordinary text without R code
-
-  |                                                                         |..........................................................       |  89%
-label: world:growth
-  |                                                                         |...........................................................      |  91%
-  ordinary text without R code
-
-  |                                                                         |............................................................     |  93%
-label: us:table
-  |                                                                         |..............................................................   |  95%
-  ordinary text without R code
-
-  |                                                                         |...............................................................  |  96%
-label: world:table
-  |                                                                         |................................................................ |  98%
-  ordinary text without R code
-
-  |                                                                         |.................................................................| 100%
-label: cleanup
-
-/usr/lib/rstudio-server/bin/pandoc/pandoc +RTS -K512m -RTS report.utf8.md --to html4 --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash+smart --output index.html --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --variable toc_float=1 --variable toc_selectors=h1,h2,h3 --variable toc_collapsed=1 --variable toc_smooth_scroll=1 --variable toc_print=1 --template /usr/local/lib/R/site-library/rmarkdown/rmd/h/default.html --highlight-style tango --css bootstrap.css --variable 'theme:bootstrap' --include-in-header /tmp/RtmpZBOWKj/rmarkdown-str501628b771bb.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' 
-2020-04-21 19:17:35: Save world map...
-2020-04-21 19:17:41: Save US map...
-2020-04-21 19:20:11: Commit changes...
