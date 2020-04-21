@@ -65,6 +65,13 @@ while (TRUE) {
     cat(": Send alert...\n")
     source("code/alert.R")
 
+    cat(format(Sys.time()))
+    cat(": Sleep for one minute...\n")
+    Sys.sleep(60)
+
+    cat(format(Sys.time()))
+    cat(": Wake up...\n")
+
   }
 
 }
