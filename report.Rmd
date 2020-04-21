@@ -49,7 +49,7 @@ theme_dark <- theme(
 load("data/collected-data.Rdata")
 ```
 
-This report was last updated on `r format(Sys.time(), "%d %B %Y at %H:%M UTC")` with daily totals from `r jhu_update_date`.
+This report is updated hourly and was last updated on `r format(Sys.time(), "%d %B %Y at %H:%M UTC")` with daily totals from `r jhu_update_date`.
 
 Data collected by [Worldometers](https://www.worldometers.info/coronavirus/), [JHU CSSE](https://systems.jhu.edu/research/public-health/ncov/), [The COVID Tracking Project](https://covidtracking.com/), and [The New York Times](https://github.com/nytimes/covid-19-data).
 
