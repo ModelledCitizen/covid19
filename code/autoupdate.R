@@ -61,6 +61,10 @@ while (TRUE) {
     cat(": Push repo...\n")
     system("git push")
 
+    cat(format(Sys.time()))
+    cat(": Send alert...\n")
+    source("code/alert.R")
+
   }
 
 }
