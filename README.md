@@ -2,6 +2,10 @@
 
 Data collection and presentation for SARS-CoV-2 pandemic.
 
+## Mechanism
+- RMarkdown hosted on GitHub Pages; auto-updated by an AWS EC2 instance
+- Leaflet / htmlwidgets maps embedded as iframes
+
 ## Sources
 
 - [Worldometers](https://www.worldometers.info/coronavirus/)
