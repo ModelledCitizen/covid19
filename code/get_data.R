@@ -123,7 +123,7 @@ pa.counties <-
 pa.overall <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > table:nth-child(2)"
+    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > table:nth-child(4)"
   ) %>%
   html_table() %>%
   (function(x) {
@@ -137,7 +137,7 @@ pa.overall <-
 pa.time <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > em:nth-child(1)"
+    xpath = "//*[@id=\"ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField\"]/p[1]/em/text()"
   ) %>%
   html_text() %>%
   (function(x)
@@ -145,11 +145,11 @@ pa.time <-
   (function(x)
     gsub("a\\.m\\.", "AM", x)) %>%
   (function(x)
-    substr(x, 47, 54))
+    substr(x, 55, 62))
 pa.date <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > p:nth-child(3) > em:nth-child(1)"
+    xpath = "//*[@id=\"ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField\"]/p[1]/em/text()",
   ) %>%
   html_text() %>%
   (function(x)
@@ -157,7 +157,7 @@ pa.date <-
   (function(x)
     gsub("a\\.m\\.", "AM", x)) %>%
   (function(x)
-    substr(x, 58, nchar(x))) %>%
+    substr(x, 66, nchar(x))) %>%
   (function(x)
     gsub(" ([0-9])", " 0\\1", x))
 pa.update <-
