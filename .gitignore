@@ -7,6 +7,8 @@ logfile.txt
 
 # nor should the alert code
 code/alert.R
+code/error.R
+
 
 # Mac folder view files
 .DS_Store
