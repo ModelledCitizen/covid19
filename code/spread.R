@@ -2,11 +2,11 @@ setwd("~/covid19")
 
 rm(list = ls())
 
-library(rgdal)
-library(purrr)
-library(plyr)
-library(RColorBrewer)
-library(animation)
+require(rgdal)
+require(purrr)
+require(plyr)
+require(RColorBrewer)
+require(animation)
 
 jhu_url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
 daily_base <- paste0(jhu_url, "csse_covid_19_daily_reports/%s.csv")

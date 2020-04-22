@@ -2,9 +2,9 @@ setwd("~/covid19")
 
 rm(list = ls())
 
-library(plyr)
-library(tidyverse)
-library(rvest)
+require(plyr)
+require(tidyverse)
+require(rvest)
 
 # Worldometers ------------------------------------------------------------
 

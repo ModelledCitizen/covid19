@@ -4,7 +4,6 @@ rm(list = ls())
 
 sink("logfile.txt")
 
-
 tryCatch({
   while (TRUE) {
     if (as.numeric(format(Sys.time(), "%M")) == 0)  {
@@ -77,5 +76,5 @@ error = function(cond) {
 },
 finally = {
   cat(format(Sys.time()))
-  cat(": This code should never run..\n")
+  cat(": Process halted.\n")
 })

@@ -13,13 +13,13 @@ output:
 ```{r setup, include=FALSE}
 setwd("~/covid19")
 
-library(knitr)
-library(purrr)
-library(ggplot2)
-library(leaflet)
-library(rgdal)
-library(rgeos)
-library(kableExtra)
+require(knitr)
+require(purrr)
+require(ggplot2)
+require(leaflet)
+require(rgdal)
+require(rgeos)
+require(kableExtra)
 
 knitr::opts_chunk$set(
   echo = FALSE,

@@ -4,7 +4,7 @@ rm(list = ls())
 
 load("data/collected-data.Rdata")
 
-library(leaflet)
+require(leaflet)
 
 lab <- paste0(
   "<strong>",
