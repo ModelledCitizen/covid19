@@ -1,10 +1,9 @@
-setwd("~/covid19")
-
-rm(list = ls())
-
-sink("logfile.txt")
-
 tryCatch({
+  setwd("~/covid19")
+  rm(list = ls())
+  sink("logfile.txt")
+  cat(format(Sys.time()))
+  cat(": System start-up.\n")
   while (TRUE) {
     if (as.numeric(format(Sys.time(), "%M")) == 0)  {
       cat(format(Sys.time()))
@@ -77,4 +76,5 @@ error = function(cond) {
 finally = {
   cat(format(Sys.time()))
   cat(": Process halted.\n")
+  sink()
 })
