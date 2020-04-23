@@ -70,7 +70,7 @@ tryCatch({
 },
 error = function(cond) {
   cat(format(Sys.time()))
-  cat(": Sending Error message..\n")
+  cat(": Sending error message...\n")
   source("code/error.R")
 },
 finally = {

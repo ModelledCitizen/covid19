@@ -6,19 +6,22 @@ require(leaflet)
 require(rgdal)
 require(rgeos)
 
-jhu_url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
-jhu_daily_base <- paste0(jhu_url, "csse_covid_19_daily_reports/%s.csv")
-tryCatch({
-  jhu_update_date <- format.Date(Sys.Date(), "%d %B %Y")
-  jhu_daily_url <- sprintf(jhu_daily_base, format.Date(Sys.Date(), "%m-%d-%Y"))
-  jhu_daily_update <- read.csv(jhu_daily_url, stringsAsFactors = F)
-},
-error = function(cond) {
-  jhu_update_date <<- format.Date(Sys.Date() - 1, "%d %B %Y")
-  jhu_daily_url <<- sprintf(jhu_daily_base, format.Date(Sys.Date() - 1, "%m-%d-%Y"))
-  jhu_daily_update <<- read.csv(jhu_daily_url, stringsAsFactors = F)
-}, finally = {})
-jhu_us_live <- jhu_daily_update[jhu_daily_update$Country_Region %in% "US",]
+# jhu_url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
+# jhu_daily_base <- paste0(jhu_url, "csse_covid_19_daily_reports/%s.csv")
+# tryCatch({
+#   jhu_update_date <- format.Date(Sys.Date(), "%d %B %Y")
+#   jhu_daily_url <- sprintf(jhu_daily_base, format.Date(Sys.Date(), "%m-%d-%Y"))
+#   jhu_daily_update <- read.csv(jhu_daily_url, stringsAsFactors = F)
+# },
+# error = function(cond) {
+#   jhu_update_date <<- format.Date(Sys.Date() - 1, "%d %B %Y")
+#   jhu_daily_url <<- sprintf(jhu_daily_base, format.Date(Sys.Date() - 1, "%m-%d-%Y"))
+#   jhu_daily_update <<- read.csv(jhu_daily_url, stringsAsFactors = F)
+# }, finally = {})
+# jhu_us_live <- jhu_daily_update[jhu_daily_update$Country_Region %in% "US",]
+
+load("data/collected-data.Rdata")
+
 jhu_us_mat <- jhu_us_live[!duplicated(jhu_us_live$FIPS), ]
 jhu_us_mat$FIPS <- sprintf("%05d", jhu_us_mat$FIPS)
 
