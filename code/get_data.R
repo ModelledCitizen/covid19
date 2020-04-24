@@ -95,12 +95,21 @@ tryCatch({
   jhu_daily_update <- read.csv(jhu_daily_url, stringsAsFactors = F)
 },
 error = function(cond) {
-  jhu_update_date <<- format.Date(Sys.Date() - 1, "%d %B %Y")
-  jhu_daily_url <<-
-    sprintf(jhu_daily_base, format.Date(Sys.Date() - 1, "%m-%d-%Y"))
-  jhu_daily_update <<- read.csv(jhu_daily_url, stringsAsFactors = F)
+  tryCatch({
+    jhu_update_date <<- format.Date(Sys.Date() - 1, "%d %B %Y")
+    jhu_daily_url <<-
+      sprintf(jhu_daily_base, format.Date(Sys.Date() - 1, "%m-%d-%Y"))
+    jhu_daily_update <<-
+      read.csv(jhu_daily_url, stringsAsFactors = F)
+  }, error = function(cond) {
+    jhu_update_date <<- format.Date(Sys.Date() - 2, "%d %B %Y")
+    jhu_daily_url <<-
+      sprintf(jhu_daily_base, format.Date(Sys.Date() - 2, "%m-%d-%Y"))
+    jhu_daily_update <<-
+      read.csv(jhu_daily_url, stringsAsFactors = F)
+  }, finally = {
+  })
 }, finally = {
-
 })
 
 
