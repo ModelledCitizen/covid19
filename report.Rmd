@@ -16,9 +16,6 @@ setwd("~/covid19")
 require(knitr)
 require(purrr)
 require(ggplot2)
-require(leaflet)
-require(rgdal)
-require(rgeos)
 require(kableExtra)
 
 knitr::opts_chunk$set(
@@ -381,7 +378,7 @@ ggplot(ctp_us_time, aes(x = date, y = totalTestResults)) +
   scale_x_date(name = "Date",
                date_breaks = "1 week",
                date_labels = "%b %e") +
-  scale_y_continuous(name = "Tests", n.breaks = 11, trans = "log10") +
+  scale_y_continuous(name = "Tests", trans = "log10") +
   theme_dark
 ```
 
@@ -413,7 +410,6 @@ plots <- map2(
     ) +
     scale_y_continuous(
       name = "Tests",
-      n.breaks = 11,
       trans = "log10",
       limits = c(1, max(ctp_st_time$totalTestResults, na.rm = T))
     ) +
@@ -434,7 +430,7 @@ ggplot(cop3, aes(x = Date, y = TOT)) +
   scale_x_date(name = "Date",
                date_breaks = "1 week",
                date_labels = "%b %e") +
-  scale_y_continuous(name = "Tests", n.breaks = 11, trans = "log10") +
+  scale_y_continuous(name = "Tests", trans = "log10") +
   theme_dark
 ```
 
@@ -469,7 +465,6 @@ ggplot(jhu_us_ts, aes(x = date, y = cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
-    n.breaks = 11,
     trans = "log10",
     limits = c(0.9, NA),
     sec.axis = dup_axis( ~ ., name = "Deaths")
@@ -489,7 +484,6 @@ ggplot(jhu_us_ts, aes(x = date, y = cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
-    n.breaks = 11,
     sec.axis = sec_axis(~ . / 20, name = "Deaths")
   ) +
   theme_dark
@@ -524,7 +518,6 @@ ggplot(world_ts, aes(x = date, y = cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
-    n.breaks = 11,
     trans = "log10",
     sec.axis = dup_axis(~ ., name = "Deaths")
   ) +
@@ -543,7 +536,6 @@ ggplot(world_ts, aes(x = date, y = cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
-    n.breaks = 11,
     sec.axis = sec_axis( ~ . / 20, name = "Deaths")
   ) +
   theme_dark
@@ -572,7 +564,6 @@ ggplot(us_growth_data, aes(x = date, y = new_cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     "New Cases",
-    n.breaks = 11,
     trans = "log10",
     sec.axis = dup_axis(name = "Deaths")
   ) +
@@ -600,7 +591,6 @@ ggplot(wrld_growth_data, aes(x = date, y = new_cases)) +
                date_labels = "%b %e") +
   scale_y_continuous(
     "New Cases",
-    n.breaks = 11,
     trans = "log10",
     sec.axis = dup_axis(name = "Deaths")
   ) +
@@ -622,7 +612,7 @@ ggplot(us_growth_data, aes(x = date, y = change_new)) +
   scale_x_date(name = "Date",
                date_breaks = "1 week",
                date_labels = "%b %e") +
-  scale_y_continuous("∂ New Cases", n.breaks = 11, limits = c(-1, 5)) +
+  scale_y_continuous("∂ New Cases", limits = c(-1, 5)) +
   theme_dark
 ```
 
@@ -640,7 +630,7 @@ ggplot(wrld_growth_data, aes(x = date, y = change_new)) +
   scale_x_date(name = "Date",
                date_breaks = "1 week",
                date_labels = "%b %e") +
-  scale_y_continuous("∂ New Cases", n.breaks = 11, limits = c(-1, 6)) +
+  scale_y_continuous("∂ New Cases", limits = c(-1, 6)) +
   theme_dark
 ```
 
