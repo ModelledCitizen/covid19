@@ -56,7 +56,7 @@ tryCatch({
 
       cat(format(Sys.time()))
       cat(": Send alert...\n")
-      source("code/alert.R")
+      #source("code/alert.R")
 
       cat(format(Sys.time()))
       cat(": Sleep for one minute...\n")
@@ -71,7 +71,7 @@ tryCatch({
 error = function(cond) {
   cat(format(Sys.time()))
   cat(": Sending error message...\n")
-  source("code/error.R")
+  #source("code/error.R")
 },
 finally = {
   cat(format(Sys.time()))
