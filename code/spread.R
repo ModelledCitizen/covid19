@@ -74,3 +74,7 @@ saveGIF({
 }, movie.name = "spread.gif", ani.width = 2000, ani.height = 1200, interval = 0.2)
 
 rm(list = ls())
+write_log <- function(message) {
+  cat(format(Sys.time()))
+  cat(paste0(": ", message, "\n"))
+}

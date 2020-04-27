@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="David Azizi" />
@@ -72,7 +72,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -134,6 +133,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -146,48 +146,9 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -201,6 +162,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -236,8 +203,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -279,7 +244,7 @@ div.tocify {
 </div>
 
 
-<p>This report is refreshed hourly and was last updated on 27 April 2020 at 15:00 UTC with daily totals from 26 April 2020.</p>
+<p>This report is refreshed hourly and was last updated on 27 April 2020 at 12:16 UTC with daily totals from 26 April 2020.</p>
 <p>Data collected by <a href="https://www.worldometers.info/coronavirus/">Worldometers</a>, <a href="https://systems.jhu.edu/research/public-health/ncov/">JHU CSSE</a>, <a href="https://covidtracking.com/">The COVID Tracking Project</a>, and <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</p>
 <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101237072);</script>
 <script async src="//static.getclicky.com/js"></script>
@@ -288,7 +253,7 @@ div.tocify {
 <h1>Overview</h1>
 <div id="united-states" class="section level2">
 <h2>United States</h2>
-<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 27 April 2020 at 15:00 UTC)
+<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 27 April 2020 at 12:16 UTC)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -318,25 +283,25 @@ Deaths / 1M Pop.
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-989,838
+993,771
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-815,472
+817,464
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-118,869
+120,299
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-55,497
+56,008
 </td>
 <td style="text-align:center;font-weight: bold;">
 15,143
 </td>
 <td style="text-align:center;font-weight: bold;">
-2,990
+3,002
 </td>
 <td style="text-align:center;font-weight: bold;">
-168
+169
 </td>
 </tr>
 </tbody>
@@ -365,19 +330,19 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-959,056
+962,522
 </td>
 <td style="text-align:center;font-weight: bold;color: seagreen !important;">
-4,482,023
+4,472,421
 </td>
 <td style="text-align:center;font-weight: bold;color: royalblue !important;">
-5,441,079
+5,434,943
 </td>
 <td style="text-align:center;font-weight: bold;">
-95,810
+95,782
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-49,164
+49,265
 </td>
 </tr>
 </tbody>
@@ -443,7 +408,7 @@ Deaths
 </div>
 <div id="pennsylvania" class="section level2">
 <h2>Pennsylvania</h2>
-<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: 26 April 2020 at 12:00 EDT)
+<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: 27 April 2020 at 12:00 EDT)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -464,16 +429,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-11,152
+11,361
 </td>
 <td style="text-align:center;font-weight: bold;color: seagreen !important;">
-24,646
+25,299
 </td>
 <td style="text-align:center;font-weight: bold;color: royalblue !important;">
-35,798
+36,660
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-272
+274
 </td>
 </tr>
 </tbody>
@@ -584,7 +549,7 @@ Deaths
 [The City of Philadelphia](https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/) (Updated: )
 
 -->
-<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: 26 April 2020 at 12:00 EDT)
+<a href="https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx">Commonwealth of Pennsylvania</a> (Updated: 27 April 2020 at 12:00 EDT)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -605,16 +570,16 @@ Deaths
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-41,165
+42,050
 </td>
 <td style="text-align:center;font-weight: bold;color: seagreen !important;">
-157,428
+161,372
 </td>
 <td style="text-align:center;font-weight: bold;color: royalblue !important;">
-198,593
+203,422
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-1,550
+1,597
 </td>
 </tr>
 </tbody>
@@ -680,7 +645,7 @@ Deaths
 </div>
 <div id="global" class="section level2">
 <h2>Global</h2>
-<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 27 April 2020 at 15:00)
+<a href="https://www.worldometers.info/coronavirus/">Worldometers</a> (Updated: 27 April 2020 at 12:16)
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -710,25 +675,25 @@ Deaths / 1M Pop.
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;color: darkorange !important;">
-3,018,196
+3,025,488
 </td>
 <td style="text-align:center;font-weight: bold;color: goldenrod !important;">
-1,921,398
+1,923,377
 </td>
 <td style="text-align:center;font-weight: bold;color: yellowgreen !important;">
-888,725
+893,120
 </td>
 <td style="text-align:center;font-weight: bold;color: firebrick !important;">
-208,073
+208,991
 </td>
 <td style="text-align:center;font-weight: bold;">
-57,510
+57,461
 </td>
 <td style="text-align:center;font-weight: bold;">
-387.2
+388.1
 </td>
 <td style="text-align:center;font-weight: bold;">
-26.7
+26.8
 </td>
 </tr>
 </tbody>
@@ -3902,6 +3867,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

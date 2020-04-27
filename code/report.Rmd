@@ -718,4 +718,8 @@ kable(
 
 ```{r cleanup}
 rm(list = ls())
+write_log <- function(message) {
+  cat(format(Sys.time()))
+  cat(paste0(": ", message, "\n"))
+}
 ```

@@ -314,3 +314,7 @@ rm(jhu_daily_base, jhu_daily_url, jhu_url)
 save(list = ls(), file = "data/collected-data.Rdata")
 
 rm(list = ls())
+write_log <- function(message) {
+  cat(format(Sys.time()))
+  cat(paste0(": ", message, "\n"))
+}

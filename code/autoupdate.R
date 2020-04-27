@@ -19,25 +19,15 @@ tryCatch({
       write_log("Get data...")
       source("code/get_data.R")
 
-      write_log <- function(message) {
-        cat(format(Sys.time()))
-        cat(paste0(": ", message, "\n"))
-      }
-
       # Knit Report -------------------------------------------------------------
 
       write_log("Render index...")
       rmarkdown::render(
         "code/report.Rmd",
         output_file = "index.html",
-        output_dir = "/home/rstudio/covid19",
+        output_dir = "~/covid19",
         quiet = T
       )
-
-      write_log <- function(message) {
-        cat(format(Sys.time()))
-        cat(paste0(": ", message, "\n"))
-      }
 
       if (as.numeric(format(Sys.time(), "%H")) %% 4 == 0)  {
         # Update World Map --------------------------------------------------------
@@ -45,30 +35,15 @@ tryCatch({
         write_log("Save world map...")
         source("code/world-map.R")
 
-        write_log <- function(message) {
-          cat(format(Sys.time()))
-          cat(paste0(": ", message, "\n"))
-        }
-
         # Update US Map -----------------------------------------------------------
 
         write_log("Save US map...")
         source("code/us-map.R")
 
-        write_log <- function(message) {
-          cat(format(Sys.time()))
-          cat(paste0(": ", message, "\n"))
-        }
-
         # Update US Map GIF -------------------------------------------------------
 
         write_log("Save spread GIF...")
         source("code/spread.R")
-
-        write_log <- function(message) {
-          cat(format(Sys.time()))
-          cat(paste0(": ", message, "\n"))
-        }
 
       }
 

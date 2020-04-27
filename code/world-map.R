@@ -47,3 +47,7 @@ leaflet(jhu_daily_update) %>%
   htmlwidgets::saveWidget("world-map.html", title = "Global COVID-19 Map")
 
 rm(list = ls())
+write_log <- function(message) {
+  cat(format(Sys.time()))
+  cat(paste0(": ", message, "\n"))
+}

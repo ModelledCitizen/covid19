@@ -239,3 +239,7 @@ leaflet(jhu_us_map) %>%
   htmlwidgets::saveWidget("us-map.html", title = "United States COVID-19 Map")
 
 rm(list = ls())
+write_log <- function(message) {
+  cat(format(Sys.time()))
+  cat(paste0(": ", message, "\n"))
+}
