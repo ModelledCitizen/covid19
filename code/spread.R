@@ -12,12 +12,8 @@ jhu_url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/css
 daily_base <- paste0(jhu_url, "csse_covid_19_daily_reports/%s.csv")
 
 td <- as.integer(Sys.Date() - as.Date("2020-03-21"))
-if (Sys.time() < paste(Sys.Date(), "23:59:59 UTC")) {
-  if (Sys.time() < paste(Sys.Date() + 1, "01:00:00 UTC")) {
-    tx <- td - 2
-  } else {
-    tx <- td - 1
-  }
+if (Sys.time() < paste(Sys.Date(), "20:45:00 EDT")) {
+  tx <- td - 1
 } else {
   tx <- td
 }
