@@ -157,15 +157,13 @@ kable(
 
 ## Pennsylvania
 [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
-```{r pa:ph}
-ph.overall <- pa.counties[pa.counties$County == "Philadelphia", c("Total Cases", "Negatives", "Deaths")]
-ph.overall[["TotalTests"]] <-
-  as.numeric(ph.overall$`Total Cases`) + as.numeric(ph.overall$Negatives) 
-ph.overall <- ph.overall[,c(1, 2, 4, 3)]
-ph.overall[1, ] <-
-  vapply(ph.overall[1, ], prettyNum, "chr", big.mark = ",")
+```{r pa:pa}
+pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 3]))
+pa.overall <- pa.overall[,c(1, 3, 4, 2)]
+pa.overall[1, ] <-
+  vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
 kable(
-  ph.overall,
+  pa.overall,
   col.names = c("Cases", "Negative Tests", "Total Tests", "Deaths"),
   row.names = F,
   align = "cccc",
@@ -270,13 +268,15 @@ kable(
 -->
 
 [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
-```{r pa:pa}
-pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 3]))
-pa.overall <- pa.overall[,c(1, 3, 4, 2)]
-pa.overall[1, ] <-
-  vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
+```{r pa:ph}
+ph.overall <- pa.counties[pa.counties$County == "Philadelphia", c("Total Cases", "Negatives", "Deaths")]
+ph.overall[["TotalTests"]] <-
+  as.numeric(ph.overall$`Total Cases`) + as.numeric(ph.overall$Negatives) 
+ph.overall <- ph.overall[,c(1, 2, 4, 3)]
+ph.overall[1, ] <-
+  vapply(ph.overall[1, ], prettyNum, "chr", big.mark = ",")
 kable(
-  pa.overall,
+  ph.overall,
   col.names = c("Cases", "Negative Tests", "Total Tests", "Deaths"),
   row.names = F,
   align = "cccc",
