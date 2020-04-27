@@ -1,80 +1,99 @@
 tryCatch({
   setwd("~/covid19")
   rm(list = ls())
+  write_log <- function(message) {
+    cat(format(Sys.time()))
+    cat(paste0(": ", message, "\n"))
+  }
   sink("logfile.txt")
-  cat(format(Sys.time()))
-  cat(": System start-up.\n")
+  write_log("System start-up.")
   while (TRUE) {
     if (as.numeric(format(Sys.time(), "%M")) == 0)  {
-      cat(format(Sys.time()))
-      cat(": Starting update...\n")
+      write_log("Starting update...")
 
-      cat(format(Sys.time()))
-      cat(": Pull repo...\n")
+      write_log("Pull repo...")
       system("git fetch; git pull")
 
       # Get Data ----------------------------------------------------------------
 
-      cat(format(Sys.time()))
-      cat(": Get data...\n")
+      write_log("Get data...")
       source("code/get_data.R")
+
+      write_log <- function(message) {
+        cat(format(Sys.time()))
+        cat(paste0(": ", message, "\n"))
+      }
 
       # Knit Report -------------------------------------------------------------
 
-      cat(format(Sys.time()))
-      cat(": Render index...\n")
-      rmarkdown::render("report.Rmd", output_file = "index.html", quiet = T)
+      write_log("Render index...")
+      rmarkdown::render(
+        "code/report.Rmd",
+        output_file = "index.html",
+        output_dir = "/home/rstudio/covid19",
+        quiet = T
+      )
+
+      write_log <- function(message) {
+        cat(format(Sys.time()))
+        cat(paste0(": ", message, "\n"))
+      }
 
       if (as.numeric(format(Sys.time(), "%H")) %% 4 == 0)  {
         # Update World Map --------------------------------------------------------
 
-        cat(format(Sys.time()))
-        cat(": Save world map...\n")
+        write_log("Save world map...")
         source("code/world-map.R")
+
+        write_log <- function(message) {
+          cat(format(Sys.time()))
+          cat(paste0(": ", message, "\n"))
+        }
 
         # Update US Map -----------------------------------------------------------
 
-        cat(format(Sys.time()))
-        cat(": Save US map...\n")
+        write_log("Save US map...")
         source("code/us-map.R")
+
+        write_log <- function(message) {
+          cat(format(Sys.time()))
+          cat(paste0(": ", message, "\n"))
+        }
 
         # Update US Map GIF -------------------------------------------------------
 
-        cat(format(Sys.time()))
-        cat(": Save spread GIF...\n")
+        write_log("Save spread GIF...")
         source("code/spread.R")
+
+        write_log <- function(message) {
+          cat(format(Sys.time()))
+          cat(paste0(": ", message, "\n"))
+        }
 
       }
 
-      cat(format(Sys.time()))
-      cat(": Commit changes...\n")
+      write_log("Commit changes...")
       system("git add .; git commit -m 'Automatic update'")
 
-      cat(format(Sys.time()))
-      cat(": Push repo...\n")
+      write_log("Push repo...")
       system("git push")
 
-      cat(format(Sys.time()))
-      cat(": Send alert...\n")
+      write_log("Send alert...")
       #source("code/alert.R")
 
-      cat(format(Sys.time()))
-      cat(": Sleep for one minute...\n")
+      write_log("Sleep for one minute...")
       Sys.sleep(60)
 
-      cat(format(Sys.time()))
-      cat(": Wake up...\n")
+      write_log("Wake up...")
 
     }
   }
 },
 error = function(cond) {
-  cat(format(Sys.time()))
-  cat(": Sending error message...\n")
+  write_log("Sending error message...")
   #source("code/error.R")
 },
 finally = {
-  cat(format(Sys.time()))
-  cat(": Process halted.\n")
+  write_log("Process halted.")
   sink()
 })

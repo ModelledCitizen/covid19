@@ -172,43 +172,44 @@ pa.date <-
 pa.update <-
   strptime(paste0(pa.time, pa.date), "%I:%M %p %m/%d/%Y") %>%
   format.Date("%d %B %Y at %H:%M EDT")
+rm(pa.date, pa.time)
 
 
 # Philadelphia Department of Public Health --------------------------------
 
-ph_url <- readLines("phila_url.txt")
-tryCatch({
-  cop <- read.csv(ph_url, stringsAsFactors = F)
-},
-error = function(cond) {
-  cop <<- read.csv("data/phila_data.csv", stringsAsFactors = F)
-},
-finally = {
-  write.csv(cop[, c("UpdatedDate", "Result.Group", "Result", "Result.Date")], "data/phila_data.csv", row.names = F)
-})
-cop$Result.Date <-
-  as.Date(strptime(cop$Result.Date, format = "%m/%e/%Y"))
-
-cop2 <-
-  data.frame(
-    Date = as.Date(rownames(table(
-      cop$Result.Date, cop$Result
-    ))),
-    NEG = table(cop$Result.Date, cop$Result)[,  "NEG"],
-    POS = table(cop$Result.Date, cop$Result)[,  "POS"],
-    row.names = NULL
-  )
-cop3 <- cop2
-for (i in 1:nrow(cop2)) {
-  cop3$NEG[i] <- sum(cop2$NEG[1:i])
-  cop3$POS[i] <- sum(cop2$POS[1:i])
-}
-cop3[["TOT"]] <- cop3$NEG + cop3$POS
-cop3 <- cop3[cop3$Date > "2020-02-29", ]
-
-phl.update <-
-  format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
-         "%d %B %Y at %H:%M EDT")
+# ph_url <- readLines("phila_url.txt")
+# tryCatch({
+#   cop <- read.csv(ph_url, stringsAsFactors = F)
+# },
+# error = function(cond) {
+#   cop <<- read.csv("data/phila_data.csv", stringsAsFactors = F)
+# },
+# finally = {
+#   write.csv(cop[, c("UpdatedDate", "Result.Group", "Result", "Result.Date")], "data/phila_data.csv", row.names = F)
+# })
+# cop$Result.Date <-
+#   as.Date(strptime(cop$Result.Date, format = "%m/%e/%Y"))
+#
+# cop2 <-
+#   data.frame(
+#     Date = as.Date(rownames(table(
+#       cop$Result.Date, cop$Result
+#     ))),
+#     NEG = table(cop$Result.Date, cop$Result)[,  "NEG"],
+#     POS = table(cop$Result.Date, cop$Result)[,  "POS"],
+#     row.names = NULL
+#   )
+# cop3 <- cop2
+# for (i in 1:nrow(cop2)) {
+#   cop3$NEG[i] <- sum(cop2$NEG[1:i])
+#   cop3$POS[i] <- sum(cop2$POS[1:i])
+# }
+# cop3[["TOT"]] <- cop3$NEG + cop3$POS
+# cop3 <- cop3[cop3$Date > "2020-02-29", ]
+#
+# phl.update <-
+#   format(strptime(unique(cop$UpdatedDate), format = "%m/%e/%Y %I:%M:%S %p"),
+#          "%d %B %Y at %H:%M EDT")
 
 
 # Reformat US Data --------------------------------------------------------
@@ -307,7 +308,8 @@ wrld_active <- wrld_confirmed - wrld_recovered - wrld_deaths
 
 # Save Data ---------------------------------------------------------------
 
-rm(i, cop, cop2, jhu_daily_base, jhu_daily_url, jhu_url, ph_url)
+#rm(i, cop, cop2, ph_url)
+rm(jhu_daily_base, jhu_daily_url, jhu_url)
 
 save(list = ls(), file = "data/collected-data.Rdata")
 
