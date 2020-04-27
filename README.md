@@ -1,4 +1,4 @@
-# COVID-19 Analysis
+# COVID-19 Dashboard
 
 Data collection and presentation for SARS-CoV-2 pandemic.
 
