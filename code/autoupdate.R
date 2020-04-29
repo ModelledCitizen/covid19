@@ -8,6 +8,10 @@ tryCatch({
   sink("logfile.txt")
   write_log("System start-up.")
   while (TRUE) {
+    write_log <- function(message) {
+      cat(format(Sys.time()))
+      cat(paste0(": ", message, "\n"))
+    }
     if (as.numeric(format(Sys.time(), "%M")) == 0)  {
       write_log("Starting update...")
 
@@ -65,10 +69,18 @@ tryCatch({
   }
 },
 error = function(cond) {
+  write_log <- function(message) {
+    cat(format(Sys.time()))
+    cat(paste0(": ", message, "\n"))
+  }
   write_log("Sending error message...")
   #source("code/error.R")
 },
 finally = {
+  write_log <- function(message) {
+    cat(format(Sys.time()))
+    cat(paste0(": ", message, "\n"))
+  }
   write_log("Process halted.")
   sink()
 })
