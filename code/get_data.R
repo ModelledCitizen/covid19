@@ -20,15 +20,15 @@ worldometers <-
 # The COVID Tracking Project ----------------------------------------------
 
 ctp_us_live <-
-  read.csv("https://covidtracking.com/api/us.csv", stringsAsFactors = F)
+  read.csv("https://covidtracking.com/api/v1/us/current.csv", stringsAsFactors = F)
 ctp_us_time <-
-  read.csv("https://covidtracking.com/api/us/daily.csv",
+  read.csv("https://covidtracking.com/api/v1/us/daily.csv",
            stringsAsFactors = F)
 ctp_st_live <-
-  read.csv("https://covidtracking.com/api/states.csv",
+  read.csv("https://covidtracking.com/api/v1/states/current.csv",
            stringsAsFactors = F)
 ctp_st_time <-
-  read.csv("https://covidtracking.com/api/states/daily.csv",
+  read.csv("https://covidtracking.com/api/v1/states/daily.csv",
            stringsAsFactors = F)
 
 ctp_us_time$date <-
