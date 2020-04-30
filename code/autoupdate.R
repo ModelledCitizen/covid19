@@ -73,6 +73,7 @@ error = function(cond) {
     cat(format(Sys.time()))
     cat(paste0(": ", message, "\n"))
   }
+  write_log("Failed:", cond)
   write_log("Sending error message...")
   #source("code/error.R")
 },
