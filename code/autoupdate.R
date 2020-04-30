@@ -33,7 +33,7 @@ tryCatch({
         quiet = T
       )
 
-      if (as.numeric(format(Sys.time(), "%H")) %% 4 == 0)  {
+      if (as.numeric(format(Sys.time(), "%H")) %in% c(1, 13)) {
         # Update World Map --------------------------------------------------------
 
         write_log("Save world map...")
