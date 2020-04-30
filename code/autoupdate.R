@@ -58,7 +58,7 @@ tryCatch({
       system("git push")
 
       write_log("Send alert...")
-      #source("code/alert.R")
+      source("code/alert.R")
 
       write_log("Sleep for one minute...")
       Sys.sleep(60)
@@ -73,9 +73,9 @@ error = function(cond) {
     cat(format(Sys.time()))
     cat(paste0(": ", message, "\n"))
   }
-  write_log("Failed:", cond)
   write_log("Sending error message...")
-  #source("code/error.R")
+  source("code/error.R")
+  write_log("Failed:", cond)
 },
 finally = {
   write_log <- function(message) {
