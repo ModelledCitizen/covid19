@@ -75,7 +75,7 @@ error = function(cond) {
   }
   write_log("Sending error message...")
   source("code/error.R")
-  write_log("Failed:", cond)
+  write_log("Process failed.")
 },
 finally = {
   write_log <- function(message) {
