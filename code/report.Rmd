@@ -401,7 +401,7 @@ ggplot(ctp_us_time, aes(x = date, y = totalTestResults)) +
   geom_point(color = "royalblue") +
   geom_line(color = "royalblue") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(name = "Tests", trans = "log10") +
   theme_dark
@@ -429,7 +429,7 @@ plots <- map2(
     ggtitle(.y) +
     scale_x_date(
       name = "Date",
-      date_breaks = "1 week",
+      date_breaks = "2 weeks",
       date_labels = "%b %e",
       limits = c(min(ctp_st_time$date), NA)
     ) +
@@ -454,7 +454,7 @@ walk(plots, print)
 #   geom_point(color = "royalblue") +
 #   geom_line(color = "royalblue") +
 #   scale_x_date(name = "Date",
-#                date_breaks = "1 week",
+#                date_breaks = "2 weeks",
 #                date_labels = "%b %e") +
 #   scale_y_continuous(name = "Tests", trans = "log10") +
 #   theme_dark
@@ -487,7 +487,7 @@ ggplot(jhu_us_ts, aes(x = date, y = cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
@@ -506,7 +506,7 @@ ggplot(jhu_us_ts, aes(x = date, y = cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
@@ -540,7 +540,7 @@ ggplot(world_ts, aes(x = date, y = cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
@@ -558,7 +558,7 @@ ggplot(world_ts, aes(x = date, y = cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     name = "Cases",
@@ -586,7 +586,7 @@ ggplot(us_growth_data, aes(x = date, y = new_cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     "New Cases",
@@ -613,7 +613,7 @@ ggplot(wrld_growth_data, aes(x = date, y = new_cases)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous(
     "New Cases",
@@ -636,7 +636,7 @@ ggplot(us_growth_data, aes(x = date, y = change_new)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous("∂ New Cases", limits = c(-1, 5)) +
   theme_dark
@@ -654,7 +654,7 @@ ggplot(wrld_growth_data, aes(x = date, y = change_new)) +
   geom_point(color = "darkorange") +
   geom_line(color = "darkorange") +
   scale_x_date(name = "Date",
-               date_breaks = "1 week",
+               date_breaks = "2 weeks",
                date_labels = "%b %e") +
   scale_y_continuous("∂ New Cases", limits = c(-1, 6)) +
   theme_dark
