@@ -57,8 +57,8 @@ tryCatch({
       write_log("Push repo...")
       system("git push")
 
-      write_log("Send alert...")
-      source("code/alert.R")
+      #write_log("Send alert...")
+      #source("code/alert.R")
 
       write_log("Sleep for one minute...")
       Sys.sleep(60)
