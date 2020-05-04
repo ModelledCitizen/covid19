@@ -58,6 +58,7 @@ x <- c(43, 72, 52, 78, 74, 69, 76, 79, 95, 70, 86, 67, 89, 68, 71, 14, 66, 07, 6
 us_cases <- us_cases[!as.numeric(us_cases$STATEFP) %in% x,]
 
 
+
 saveGIF({
   for (d in day) {
     plot(
@@ -68,9 +69,8 @@ saveGIF({
       cex.sub = 4
     )
   }
-}, movie.name = "spread.gif", ani.width = 2000, ani.height = 1200, interval = 0.2)
+}, movie.name = "spread.gif", ani.width = 2000, ani.height = 1200, interval = 0.2, autobrowse = FALSE)
 
-system("killall eog")
 
 rm(list = ls())
 write_log <- function(message) {
