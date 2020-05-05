@@ -13,6 +13,12 @@ tryCatch({
       cat(paste0(": ", message, "\n"))
     }
     if (as.numeric(format(Sys.time(), "%M")) == 0)  {
+
+      if (as.numeric(format(Sys.time(), "%H")) == 23) {
+        write_log("Delaying 2300 start.")
+        Sys.sleep(90)
+      }
+
       write_log("Starting update...")
 
       write_log("Pull repo...")
