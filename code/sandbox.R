@@ -19,6 +19,25 @@ pa.counties <-
   (function(x) {colnames(x) <- x[1,]; x[-1,]})
 
 
+ph.overall <- pa.counties[pa.counties$County == "Philadelphia", c("Total Cases", "Negatives")]
+ph.overall[["TotalTests"]] <-
+  as.numeric(ph.overall$`Total Cases`) + as.numeric(ph.overall$Negatives)
+ph.overall <- ph.overall[,c(1, 2, 3)]
+ph.overall[1, ] <-
+  vapply(ph.overall[1, ], prettyNum, "chr", big.mark = ",")
+kable(
+  ph.overall,
+  col.names = c("Cases", "Negative Tests", "Total Tests"),
+  row.names = F,
+  align = "ccc",
+  digits = 3
+) %>%
+  kable_styling() %>%
+  row_spec(1, bold = T) %>%
+  column_spec(1, color = "darkorange") %>%
+  column_spec(2, color = "seagreen") %>%
+  column_spec(3, color = "royalblue")
+
 "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/UID_ISO_FIPS_LookUp_Table.csv"
 
 
