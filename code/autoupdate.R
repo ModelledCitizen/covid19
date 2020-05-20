@@ -53,9 +53,10 @@ tryCatch({
         # Update US Map GIF -------------------------------------------------------
 
         write_log("Save spread GIF...")
-        source("code/spread.R")
+        #source("code/spread.R")
 
       }
+
 
       write_log("Commit changes...")
       system("git add .; git commit -m 'Automatic update'")
