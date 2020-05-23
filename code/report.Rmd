@@ -714,8 +714,10 @@ kable(
   column_spec(1, bold = T)
 ```
 
+# Notes
+Please send all feedback to <a href="mailto:david@unlikelyvolcano.com">david@unlikelyvolcano.com</a>.
 
-```{r cleanup}
+```{r cleanup, include=FALSE}
 rm(list = ls())
 write_log <- function(message) {
   cat(format(Sys.time()))
