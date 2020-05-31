@@ -118,7 +118,7 @@ error = function(cond) {
 pa.counties <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > table:nth-child(25)"
+    xpath = "//*[@id=\"ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField\"]/table[5]"
   ) %>%
   html_table() %>%
   (function(x) {
@@ -132,7 +132,7 @@ pa.counties <-
 pa.overall <-
   read_html("https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx") %>%
   html_nodes(
-    "#ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField > table:nth-child(4)"
+    xpath = "//*[@id=\"ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField\"]/table[1]"
   ) %>%
   html_table() %>%
   (function(x) {
