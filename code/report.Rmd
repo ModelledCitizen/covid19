@@ -61,15 +61,13 @@ Data collected by [Worldometers](https://www.worldometers.info/coronavirus/), [J
 [Worldometers](https://www.worldometers.info/coronavirus/) (Updated: `r format(Sys.time(), "%d %B %Y at %H:%M %Z")`)
 ```{r wmt:us}
 kable(
-  worldometers[worldometers$`Country,Other` == "USA", c(2, 7, 6, 4, 8, 9, 10)],
+  worldometers[worldometers$`Country,Other` == "USA", c("TotalCases", "ActiveCases", "TotalRecovered", "TotalDeaths", "Serious,Critical")],
   col.names = c(
     "Cases",
     "Active",
     "Recovered",
     "Deaths",
-    "Critical",
-    "Cases / 1M Pop.",
-    "Deaths / 1M Pop."
+    "Critical"
   ),
   row.names = F,
   align = "ccccc"
@@ -156,25 +154,25 @@ kable(
 ```
 
 ## Pennsylvania
-[Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
+<!-- [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r #pa.update`) -->
 ```{r pa:pa}
-pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 3]))
-pa.overall <- pa.overall[,c(1, 3, 4, 2)]
-pa.overall[1, ] <-
-  vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
-kable(
-  pa.overall,
-  col.names = c("Cases", "Negative Tests", "Total Tests", "Deaths"),
-  row.names = F,
-  align = "cccc",
-  digits = 3
-) %>%
-  kable_styling() %>%
-  row_spec(1, bold = T) %>%
-  column_spec(1, color = "darkorange") %>%
-  column_spec(2, color = "seagreen") %>%
-  column_spec(3, color = "royalblue") %>%
-  column_spec(4, color = "firebrick")
+# pa.overall[["Total"]] <- as.numeric(gsub(",", "", pa.overall[1, 1])) + as.numeric(gsub(",", "", pa.overall[1, 3]))
+# pa.overall <- pa.overall[,c(1, 3, 4, 2)]
+# pa.overall[1, ] <-
+#   vapply(pa.overall[1, ], prettyNum, "chr", big.mark = ",")
+# kable(
+#   pa.overall,
+#   col.names = c("Cases", "Negative Tests", "Total Tests", "Deaths"),
+#   row.names = F,
+#   align = "cccc",
+#   digits = 3
+# ) %>%
+#   kable_styling() %>%
+#   row_spec(1, bold = T) %>%
+#   column_spec(1, color = "darkorange") %>%
+#   column_spec(2, color = "seagreen") %>%
+#   column_spec(3, color = "royalblue") %>%
+#   column_spec(4, color = "firebrick")
 ```
 
 [The COVID Tracking Project](https://covidtracking.com/) (Updated: `r format(Sys.Date(), "%d %B %Y")`)
@@ -267,26 +265,26 @@ kable(
 ```
 -->
 
-[Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r pa.update`)
+<!-- [Commonwealth of Pennsylvania](https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx) (Updated: `r #pa.update`) -->
 ```{r pa:ph}
-ph.overall <- pa.counties[pa.counties$County == "Philadelphia", c("Total Cases", "Negatives")]
-ph.overall[["TotalTests"]] <-
-  as.numeric(ph.overall$`Total Cases`) + as.numeric(ph.overall$Negatives) 
-ph.overall <- ph.overall[,c(1, 2, 3)]
-ph.overall[1, ] <-
-  vapply(ph.overall[1, ], prettyNum, "chr", big.mark = ",")
-kable(
-  ph.overall,
-  col.names = c("Cases", "Negative Tests", "Total Tests"),
-  row.names = F,
-  align = "ccc",
-  digits = 3
-) %>%
-  kable_styling() %>%
-  row_spec(1, bold = T) %>%
-  column_spec(1, color = "darkorange") %>%
-  column_spec(2, color = "seagreen") %>%
-  column_spec(3, color = "royalblue")
+# ph.overall <- pa.counties[pa.counties$County == "Philadelphia", c("Total Cases", "Negatives")]
+# ph.overall[["TotalTests"]] <-
+#   as.numeric(ph.overall$`Total Cases`) + as.numeric(ph.overall$Negatives) 
+# ph.overall <- ph.overall[,c(1, 2, 3)]
+# ph.overall[1, ] <-
+#   vapply(ph.overall[1, ], prettyNum, "chr", big.mark = ",")
+# kable(
+#   ph.overall,
+#   col.names = c("Cases", "Negative Tests", "Total Tests"),
+#   row.names = F,
+#   align = "ccc",
+#   digits = 3
+# ) %>%
+#   kable_styling() %>%
+#   row_spec(1, bold = T) %>%
+#   column_spec(1, color = "darkorange") %>%
+#   column_spec(2, color = "seagreen") %>%
+#   column_spec(3, color = "royalblue")
 ```
 
 [JHU CSSE](https://systems.jhu.edu/research/public-health/ncov/) (Updated: `r jhu_update_date`)
@@ -334,15 +332,13 @@ kable(
 [Worldometers](https://www.worldometers.info/coronavirus/) (Updated: `r format(Sys.time(), "%d %B %Y at %H:%M")`)
 ```{r wmt:world}
 kable(
-  worldometers[nrow(worldometers), c(2, 7, 6, 4, 8, 9, 10)],
+  worldometers[nrow(worldometers), c("TotalCases", "ActiveCases", "TotalRecovered", "TotalDeaths", "Serious,Critical")],
   col.names = c(
     "Cases",
     "Active",
     "Recovered",
     "Deaths",
-    "Critical",
-    "Cases / 1M Pop.",
-    "Deaths / 1M Pop."
+    "Critical"
   ),
   row.names = F,
   align = "ccccc"
