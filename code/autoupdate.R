@@ -52,7 +52,7 @@ tryCatch({
 
         # Update US Map GIF -------------------------------------------------------
 
-        write_log("Save spread GIF...")
+        #write_log("Save spread GIF...")
         #source("code/spread.R")
 
       }
