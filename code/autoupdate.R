@@ -18,6 +18,10 @@ tryCatch({
         write_log("Delaying 2300 start.")
         Sys.sleep(90)
       }
+      if (as.numeric(format(Sys.time(), "%H")) == 2) {
+        write_log("Delaying 0200 start.")
+        Sys.sleep(90)
+      }
 
       write_log("Starting update...")
 
