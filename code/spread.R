@@ -69,7 +69,7 @@ saveGIF({
       cex.sub = 4
     )
   }
-}, movie.name = "spread.gif", ani.width = 2000, ani.height = 1200, interval = 0.2, autobrowse = FALSE)
+}, movie.name = "spread.gif", ani.width = 1000, ani.height = 600, interval = 0.1, autobrowse = FALSE)
 
 
 rm(list = ls())
