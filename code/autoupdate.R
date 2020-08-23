@@ -63,6 +63,7 @@ tryCatch({
 
 
       write_log("Commit changes...")
+      #system("git add .; git commit -m 'Manual update'")
       system("git add .; git commit -m 'Automatic update'")
 
       write_log("Push repo...")
